@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "lint": "tslint -p tsconfig.json -c tslint.json --fix",
     "pre-commit": "npm run prettier && npm run lint",
-    "prettier": "prettier 'src/**/*.ts' --write"
+    "prettier": "prettier 'src/**/*.{js,ts,json}' --write"
   },
   "repository": {
     "type": "git",
