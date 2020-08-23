@@ -6,7 +6,7 @@ services:
       - database-data:/data/db
       - mongo-config:/data/configdb
     ports:
-      - 27018:27017
+      - 27017:27017
 
 volumes:
   database-data:
