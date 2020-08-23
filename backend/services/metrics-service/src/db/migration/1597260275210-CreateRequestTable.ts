@@ -13,6 +13,7 @@ export class CreateRequestTable1597260275210 implements MigrationInterface {
         name: 'tenantId',
         type: 'varchar',
         length: '256',
+        isNullable: false,
       },
       {
         name: 'url',

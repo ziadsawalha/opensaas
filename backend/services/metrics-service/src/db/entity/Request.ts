@@ -9,7 +9,7 @@ export class Request extends BaseEntity {
   id!: number;
 
   @Field(() => ID)
-  @Column('varchar', { length: 256 })
+  @Column('varchar', { length: 256, nullable: false })
   tenantId!: string;
 
   @Field(() => String)
