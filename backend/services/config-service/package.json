@@ -1,5 +1,5 @@
 {
-  "name": "create-saas",
+  "name": "config-service",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -11,6 +11,7 @@
     "nodemon": "nodemon",
     "pre-commit": "npm run prettier && npm run lint",
     "prettier": "prettier 'src/**/*.{js,ts,json}' --write",
+    "provision": "docker-compose up -d",
     "start": "ts-node src/server.ts"
   },
   "repository": {
