@@ -13,7 +13,7 @@
     "provision": "lerna run provision",
     "run-api-gw": "ts-node backend/api-gw/src/server.ts",
     "run-config-service": "ts-node backend/services/config-service/src/server.ts",
-    "run-metrics-service": "ts-node --project backend/services/metrics-service/tsconfig.json backend/services/metrics-service/src/server.ts",
+    "run-metrics-service": "cd backend/services/metrics-service && ts-node --project tsconfig.json src/server.ts",
     "start": "concurrently \"npm run run-api-gw\" \"npm run run-config-service\" \"npm run run-metrics-service\""
   },
   "repository": {
