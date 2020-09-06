@@ -2,11 +2,15 @@
 
 import * as yargs from 'yargs';
 import { startServices } from './run-services';
+import { addService } from './add-service';
+import { removeService } from './remove-service';
 import { initRepo } from './init-repository';
 
 const commands: any = {
   run: startServices,
   init: initRepo,
+  add: addService,
+  remove: removeService,
 };
 
 const COMMANDS = ['run', 'add', 'remove'];

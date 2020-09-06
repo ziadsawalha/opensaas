@@ -3,9 +3,20 @@
 Create fully bundled SaaS application (Backend & Frontend) using an interactive CLI.
 
 
+## CLI
+
+`npm run cli add service-name`
+
+`npm run cli remove service-name`
+
+`npm run cli run`
+
+`npm run cli init`
+
+
 ## How to run
 
-`docker-compose up -d`
+`npm run provision`
 
 `npm run start`
 
