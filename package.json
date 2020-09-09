@@ -3,18 +3,25 @@
   "version": "1.0.0",
   "description": "Create fully bundled SaaS application (Backend & Frontend) using an interactive CLI",
   "main": "bin/cli.js",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "cli": "ts-node cli/cli.ts",
+    "heroku-prebuild": "cd backend/api-gw && npm install && cd ../services/metrics-service && npm install && cd ../config-service && npm install",
+    "heroku-postbuild": "echo 'npm run provision npm run migration'",
     "lint": "tslint -p tsconfig.json -c tslint.json --fix",
+    "migration": "cd backend/services/metrics-service && npm run typeorm:migrate && npm run typeorm:seed",
     "pre-commit": "npm run prettier && npm run lint",
     "prettier": "prettier 'cli/**/*.{js,ts,json}' --write",
     "provision": "lerna run provision",
     "run-api-gw": "ts-node backend/api-gw/src/server.ts",
     "run-config-service": "ts-node backend/services/config-service/src/server.ts",
     "run-metrics-service": "cd backend/services/metrics-service && ts-node --project tsconfig.json src/server.ts",
-    "start": "concurrently \"npm run run-api-gw\" \"npm run run-config-service\" \"npm run run-metrics-service\""
+    "start": "concurrently \"npm run run-api-gw\" \"npm run run-config-service\" \"npm run run-metrics-service\"",
+    "tsc": "tsc"
   },
   "repository": {
     "type": "git",
@@ -40,6 +47,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "child_process": "^1.0.2",
+    "command-exists": "^1.2.9",
     "concurrently": "^5.3.0",
     "elegant-spinner": "^2.0.0",
     "log-update": "^4.0.0",
