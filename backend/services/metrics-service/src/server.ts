@@ -1,8 +1,9 @@
 import 'reflect-metadata';
 import * as express from 'express';
+import * as morgan from 'morgan';
 import { createConnection } from 'typeorm';
 import { ApolloServer } from 'apollo-server-express';
-import { buildSchema } from 'type-graphql';
+import { buildFederatedSchema } from './helpers/buildFederatedSchema';
 import { RequestResolver } from './resolvers/Request';
 import { APP_PORT } from './lib/config';
 
@@ -12,13 +13,15 @@ interface Context {
   req: express.Request;
 }
 
+app.use(morgan('combined'));
+
 app.get('/', (req, res) => {
   res.send('I am up');
 });
 
 async function main() {
   await createConnection();
-  const schema = await buildSchema({ resolvers: [RequestResolver], validate: false });
+  const schema = await buildFederatedSchema({ resolvers: [RequestResolver] });
   const context = ({ req }: Context) => {
     const tenantId = req.headers['frontegg-tenant-id'] || '';
     return { tenantId };

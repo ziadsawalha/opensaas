@@ -57,6 +57,7 @@
     "yargs": "^15.4.1"
   },
   "devDependencies": {
+    "@types/command-exists": "^1.2.0",
     "@types/prompts": "^2.0.8",
     "@types/shelljs": "^0.8.8",
     "@types/yargs": "^15.0.5",

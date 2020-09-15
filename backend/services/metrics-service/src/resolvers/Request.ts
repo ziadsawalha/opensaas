@@ -3,7 +3,7 @@ import { Request } from '../db/entity/Request';
 import { Context } from './types/context';
 import { NewRequestInput } from '../dto/new-request.input';
 
-@Resolver()
+@Resolver(of => Request)
 export class RequestResolver {
   @Query(() => [Request])
   requests(@Ctx() { tenantId }: Context) {
