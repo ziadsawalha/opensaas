@@ -1,0 +1,68 @@
+$themes: (
+  light: (
+    backgroundMainColor: #fafafa,
+    backgroundColor: #fff,
+    borderColor: #eeeeee,
+    borderLeftColor: 4px solid #fff,
+    backgroundElements: #ebebeb,
+    borderBottom: 1px solid #eee,
+    textColor: #212529,
+  ),
+  dark: (
+    backgroundMainColor: #212121,
+    backgroundColor: #424242,
+    backgroundElements: #373737,
+    borderLeftColor: 4px solid #373737,
+    borderBottom: 1px solid #757575,
+    borderColor: #373737,
+    textColor: #ddd,
+  ),
+  navbar: (
+    textColorNavbar: #ddd,
+    backgroundColorNavbar: #424242,
+    borderColorNavbar: 1px solid #757575,
+    backgroundElementsrNavbar: #373737,
+  ),
+  sidebar: (
+    textColorSidebar: #ddd,
+    backgroundColorSidebar: #424242,
+    borderColorSidebar: 1px solid #757575,
+    backgroundElementsrSidebar: #373737,
+    borderLeftColorSidebar: 4px solid #373737,
+  ),
+  customNavbar: (
+    customNavbarColor: var(--custom-nav-bg),
+    customNavbarTxtColor: var(--custom-nav-txt),
+    customNavbarSearch: var(--custom-nav-search),
+    customNavbarBorderBottom: 1px solid var(--custom-nav-bg),
+  ),
+  customSidebar: (
+    customSidebarColor: var(--custom-sidebar-bg),
+    customSidebarTxtColor: var(--custom-sidebar-txt),
+    customSidebarActiveTab: var(--custom-sidebar-active-tab),
+    customSidebarActiveTabBorder: 4px solid var(--custom-sidebar-active-tab),
+  ),
+);
+
+@mixin themify($themes: $themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

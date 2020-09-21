@@ -1,0 +1,36 @@
+html,
+body,
+#root,
+.app {
+  width: 100%;
+  height: 100%;
+  --custom-nav-bg: #fcfcfc;
+  --custom-nav-txt: #212529;
+  --custom-nav-search: #212529;
+
+  --custom-sidebar-bg: #fcfcfc;
+  --custom-sidebar-txt: #000;
+  --custom-sidebar-active-tab: #2196f3;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/css/fonts/Poppins.woff2') format('woff2');
+}
+body {
+  margin: 0;
+  font-size: 0.825rem !important;
+  font-family: Poppins, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+*,
+:after,
+:before {
+  box-sizing: border-box;
+  outline: none !important;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}

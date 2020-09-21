@@ -1,0 +1,114 @@
+@import '../../Pages/MainLayout/themes.scss';
+
+.NavBar {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 110;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  height: 4rem;
+  background-color: white;
+  @include themify($themes) {
+    color: themed('textColor');
+    background-color: themed('backgroundColor');
+    border-bottom: themed('borderBottom');
+
+    color: themed('textColorNavbar');
+    background-color: themed('backgroundColorNavbar');
+    border-bottom: themed('borderBottomNavbar');
+
+    background-color: themed('customNavbarColor');
+    color: themed('customNavbarTxtColor');
+    border-bottom: themed('customNavbarBorderBottom');
+  }
+  label {
+    margin-bottom: 0;
+  }
+  .search-icon {
+    position: relative;
+    left: 3em;
+  }
+  .search-field {
+    flex: 1 1;
+    margin-right: 1rem;
+    max-width: 20rem;
+    border-radius: 100px;
+    border-width: 0;
+    box-sizing: border-box;
+    padding: 0 3em;
+    background-color: #ebebeb;
+    @include themify($themes) {
+      background-color: themed('backgroundElements');
+      color: themed('textColor');
+
+      color: themed('textColorNavbar');
+      background-color: themed('backgroundElementsrNavbar');
+
+      background-color: themed('customNavbarSearch');
+      color: themed('customNavbarTxtColor');
+    }
+    outline: none !important;
+    &:focus {
+      @include themify($themes) {
+        background-color: themed('backgroundElements');
+        color: themed('textColor');
+
+        background-color: themed('customNavbarSearch');
+        color: themed('customNavbarTxtColor');
+      }
+      box-shadow: none;
+    }
+  }
+  .logo {
+    flex: 0 1 16rem;
+    transition: all 330ms cubic-bezier(0, 0, 0.2, 1);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 4rem;
+    white-space: nowrap;
+    padding-left: 1rem;
+    a {
+      position: relative;
+      left: -5px;
+      height: 3rem;
+      padding-right: 5px;
+      padding-left: 5px;
+      transition: width 0.33s ease;
+      overflow: hidden;
+      width: auto;
+      img {
+        position: relative;
+        height: 28px;
+        width: 28px;
+      }
+      span {
+        transition: all 0.15s ease-in-out;
+        max-width: 16rem;
+        margin-right: 0;
+        margin-left: 8px;
+      }
+    }
+  }
+  &.collapsed {
+    .logo {
+      flex: 0 1 4rem;
+      a {
+        transition: width 0.33s ease;
+        overflow: hidden;
+      }
+      span {
+        max-width: 0;
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+}

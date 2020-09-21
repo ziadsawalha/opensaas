@@ -4,10 +4,10 @@ import './App.scss';
 
 const App: React.FC = () => {
   return (
-    <div className="app">
-      <Routes/>
+    <div className='app'>
+      <Routes />
     </div>
   );
-}
+};
 
 export default App;
