@@ -31,6 +31,7 @@
   "homepage": "https://github.com/frontegg/create-saas#readme",
   "dependencies": {
     "@apollo/gateway": "^0.20.0",
+    "@frontegg/client": "^1.0.69",
     "apollo-server-express": "^2.17.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

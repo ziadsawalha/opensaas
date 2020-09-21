@@ -2,11 +2,26 @@ import * as express from 'express';
 import * as morgan from 'morgan';
 import { ApolloServer } from 'apollo-server-express';
 import { ApolloGateway } from '@apollo/gateway';
-import { APP_PORT, METRICS_URL, CONFIG_URL } from './lib/config';
+import { APP_PORT, METRICS_URL, CONFIG_URL, FRONTEGG_CLIENT_ID, FRONTEGG_API_KEY } from './lib/config';
+import { frontegg, FronteggPermissions } from '@frontegg/client';
 import AuthenticatedDataSource from './autenticated-data-source';
 
 const app: express.Application = express();
 app.use(morgan('combined'));
+
+app.use('/frontegg', frontegg({
+                                clientId: FRONTEGG_CLIENT_ID,
+                                apiKey: FRONTEGG_API_KEY,
+                                contextResolver: async () => {
+                                  const userId = 'the-logged-in-user-id';
+                                  const tenantId = 'my-tenant-id';
+                                  return {
+                                    userId,
+                                    tenantId,
+                                    permissions: [FronteggPermissions.All], // Permissions can be controlled
+                                  }
+                                }
+                              }));
 
 // TODO - replace this with frontEgg middleware
 app.use('/*', (req, res, next) => {
