@@ -1,14 +1,17 @@
 import * as express from 'express';
 import { APP_PORT, DB_URI } from './lib/config';
 import connectDB from './db';
-import schema from './schema/schema';
+import schema from './graphql/schema';
 import { ApolloServer } from 'apollo-server-express';
+import * as morgan from 'morgan';
 
 const app: express.Application = express();
 
 interface Context {
   req: express.Request;
 }
+
+app.use(morgan('combined'));
 
 app.get('/', (req, res) => {
   res.send('I am up');

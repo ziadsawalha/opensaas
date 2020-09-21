@@ -1,6 +1,7 @@
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { ObjectType, Field, ID } from 'type-graphql';
+import { ObjectType, Field, ID, Directive } from 'type-graphql';
 
+@Directive('@key(fields: "id")')
 @Entity({ name: 'requests' })
 @ObjectType()
 export class Request extends BaseEntity {
