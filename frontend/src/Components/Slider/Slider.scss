@@ -1,0 +1,17 @@
+@import '../../Pages/MainLayout/themes.scss';
+
+.slider {
+  margin: 1rem;
+  border-radius: 0.5rem;
+  @include themify($themes) {
+    background-color: themed('backgroundColor');
+  }
+  .content_slider {
+    padding: 1rem;
+  }
+}
+
+.content_slider {
+  width: 100%;
+  max-width: 30rem;
+}
