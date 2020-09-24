@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build:css": "postcss src/Tailwind.css -o src/tailwind.output.css",
     "build": "react-scripts build",
-    "build:tailwind": "tailwindcss build src/Tailwind.css -c tailwind.js -o src/tailwind.output.css",
     "eject": "react-scripts eject",
     "lint": "tslint -p tsconfig.json -c tslint.json --fix",
-    "prebuild": "npm run build:tailwind",
+    "prebuild": "npm run build:css",
     "pre-commit": "npm run prettier && npm run lint",
-    "prestart": "npm run build:tailwind",
+    "prestart": "npm run build:css",
     "prettier": "prettier --write 'src/**/*.{ts,tsx,json,scss,md}'",
     "start": "react-scripts start",
     "test": "react-scripts test"
