@@ -7,8 +7,8 @@ import {
 } from './../../components';
 
 const NavbarUser = (props) => (
-    <NavItem { ...props }>
-        <NavLink href="/account/login">
+    <NavItem {...props}>
+        <NavLink style={{ padding: 0, fontSize: '28px' }} href="/account/logout">
             <i className="fa fa-power-off" />
         </NavLink>
     </NavItem>

@@ -23,13 +23,12 @@ if (FRONTEGG_CLIENT_ID && FRONTEGG_API_KEY) {
     frontegg({
       clientId: FRONTEGG_CLIENT_ID,
       apiKey: FRONTEGG_API_KEY,
-      // authMiddleware: withAuthentication(),
+      authMiddleware: withAuthentication(),
       contextResolver: async (req: any) => {
-        const permissions = [FronteggPermissions.All];
         return {
-          permissions,
-          tenantId: 'my-tenant-id' || req.user?.tenantId,
-          userId: 'my-user-id' || req.user?.sub,
+          tenantId: req.user?.tenantId,
+          userId: req.user?.sub,
+          permissions: [FronteggPermissions.All],
         };
       },
     }),
