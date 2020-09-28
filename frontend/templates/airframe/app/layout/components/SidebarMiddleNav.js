@@ -21,7 +21,7 @@ export const SidebarMiddleNav = () => (
             title="Widgets"
             to='/widgets'
         />
-        { /* -------- Cards ---------*/ }
+        { /* -------- Cards ---------*/}
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-clone"></i>}
             title="Cards"
@@ -29,7 +29,7 @@ export const SidebarMiddleNav = () => (
             <SidebarMenu.Item title="Cards" to='/cards/cards' exact />
             <SidebarMenu.Item title="Cards Headers" to='/cards/cardsheaders' exact />
         </SidebarMenu.Item>
-        { /* -------- Layouts ---------*/ }
+        { /* -------- Layouts ---------*/}
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-columns"></i>}
             title="Layouts"
@@ -40,7 +40,7 @@ export const SidebarMiddleNav = () => (
             <SidebarMenu.Item title="Sidebar With Navbar" to="/layouts/sidebar-with-navbar" exact />
             <SidebarMenu.Item title="Drag &amp; Drop" to='/layouts/dnd-layout' exact />
         </SidebarMenu.Item>
-        { /* -------- Interface ---------*/ }
+        { /* -------- Interface ---------*/}
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-toggle-on"></i>}
             title="Interface"
@@ -68,14 +68,14 @@ export const SidebarMiddleNav = () => (
             <SidebarMenu.Item title="Drag &amp; Drop Elements" to='/interface/drag-and-drop-elements' />
             <SidebarMenu.Item title="Calendar" to='/interface/calendar' />
         </SidebarMenu.Item>
-        { /* -------- Graphs ---------*/ }
+        { /* -------- Graphs ---------*/}
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-pie-chart"></i>}
             title="Graphs"
         >
             <SidebarMenu.Item title="ReCharts" to='/graphs/re-charts' />
         </SidebarMenu.Item>
-        { /* -------- Forms ---------*/ }
+        { /* -------- Forms ---------*/}
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-check-square-o"></i>}
             title="Forms"
@@ -92,7 +92,7 @@ export const SidebarMiddleNav = () => (
             <SidebarMenu.Item title="Dropzone" to='/forms/dropzone' />
             <SidebarMenu.Item title="Sliders" to='/forms/sliders' />
         </SidebarMenu.Item>
-        { /* -------- Tables ---------*/ }
+        { /* -------- Tables ---------*/}
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-trello"></i>}
             title="Tables"
@@ -101,7 +101,7 @@ export const SidebarMiddleNav = () => (
             <SidebarMenu.Item title="Extended Tables" to='/tables/extended-table' />
             <SidebarMenu.Item title="AgGrid" to='/tables/ag-grid' />
         </SidebarMenu.Item>
-        { /* -------- Apps ---------*/ }
+        { /* -------- Apps ---------*/}
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-mouse-pointer"></i>}
             title="Apps"
@@ -150,21 +150,26 @@ export const SidebarMiddleNav = () => (
             <SidebarMenu.Item title="Clients" to="/apps/clients" exact />
             <SidebarMenu.Item title="Chat" to="/apps/chat" exact />
         </SidebarMenu.Item>
-        { /* -------- Pages ---------*/ }
+        { /* -------- Pages ---------*/}
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-copy"></i>}
             title="Pages"
         >
-            <SidebarMenu.Item title="Register" to="/pages/register" />
-            <SidebarMenu.Item title="Login" to="/account/login" />
-            <SidebarMenu.Item title="Forgot Password" to="/pages/forgot-password" />
             <SidebarMenu.Item title="Lock Screen" to="/pages/lock-screen" />
             <SidebarMenu.Item title="Error 404" to="/pages/error-404" />
-            <SidebarMenu.Item title="Confirmation" to="/pages/confirmation" />
-            <SidebarMenu.Item title="Success" to="/pages/success" />
-            <SidebarMenu.Item title="Danger" to="/pages/danger" />
             <SidebarMenu.Item title="Coming Soon" to="/pages/coming-soon" />
             <SidebarMenu.Item title="Timeline" to="/pages/timeline" />
+        </SidebarMenu.Item>
+        <SidebarMenu.Item
+            icon={<i className="fa fa-fw fa-copy"></i>}
+            title="Enterprise"
+        >
+            <SidebarMenu.Item title="Team management" to="/pages/team-management" />
+            <SidebarMenu.Item title="Audit Logs" to="/pages/audit-logs" />
+            <SidebarMenu.Item title="SSO" to="/pages/sso" />
+            <SidebarMenu.Item title="Slack Integration" to="/pages/slack" />
+            <SidebarMenu.Item title="Webhooks Integration" to="/pages/webhooks" />
+            <SidebarMenu.Item title="Reports" to="/pages/reports" />
         </SidebarMenu.Item>
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-star-o"></i>}
@@ -176,7 +181,7 @@ export const SidebarMiddleNav = () => (
             title="Docs"
             href='https://webkom.gitbook.io/spin/v/airframe/airframe-react/documentation-react'
         />
-        { /* -------- Versions ---------*/ }
+        { /* -------- Versions ---------*/}
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-folder-open-o"></i>}
             title="Versions"
