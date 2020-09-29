@@ -105,7 +105,7 @@ module.exports = {
                     { loader: 'css-loader' },
                     { loader: 'postcss-loader' }
                 ],
-                include: [path.resolve(config.srcDir, 'styles')]
+                include: [path.resolve(config.srcDir, 'styles'), /node_modules/]
             },
             {
                 test: /\.scss$/,
