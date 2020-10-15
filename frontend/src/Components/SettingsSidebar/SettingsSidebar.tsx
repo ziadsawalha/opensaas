@@ -1,11 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import Switch from '@material-ui/core/Switch';
-import { List, ListItem, ListItemText, Collapse } from '@material-ui/core';
-import { stateType } from '../SettingsButton/types';
-import { HuePicker } from 'react-color';
+import { List, ListItem, ListItemText, Collapse, Drawer, Switch } from '@material-ui/core';
 import { ExpandLess, ExpandMore } from '@material-ui/icons';
+import { HuePicker } from 'react-color';
 
 const useStyles = makeStyles({
   list: {
@@ -24,21 +21,15 @@ const useStyles = makeStyles({
 
 type SettingsSidebarProps = {
   open: boolean;
-  toggleDrawer: (open: boolean) => void;
+  toggle: (open: boolean) => void;
   palletType: string;
   handleThemeChange: (value: 'light' | 'dark' | 'navbar' | 'sidebar') => void;
-  settings: { label: string; state: stateType<boolean> }[];
+  settings: { label: string; state: any }[];
   handleChangeNavbar: (value: string, param: string, theme: string) => void;
 };
 
-const SettingsSidebar = ({
-  open,
-  toggleDrawer,
-  palletType,
-  settings,
-  handleChangeNavbar,
-  handleThemeChange,
-}: SettingsSidebarProps) => {
+const SettingsSidebar = (props: SettingsSidebarProps) => {
+  const { open, toggle, palletType, settings, handleChangeNavbar, handleThemeChange } = props;
   const [styles, setStyles] = React.useState({
     background: '#fff',
     txt: '#000',
@@ -53,7 +44,7 @@ const SettingsSidebar = ({
   const classes = useStyles();
 
   return (
-    <Drawer anchor={'right'} open={open} onClose={() => toggleDrawer(false)}>
+    <Drawer anchor={'right'} open={open} onClose={() => toggle(false)}>
       <div className={classes.header}>SETTINGS</div>
       <List className={classes.list}>
         {[

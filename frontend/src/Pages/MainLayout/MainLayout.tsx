@@ -1,44 +1,45 @@
 import React, { useCallback } from 'react';
-import './MainLayout.scss';
-import Sidebar from '../../Components/Sidebar';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import SampleFormPage from './SampleFormPage';
-import ValidationFormPage from './ValidationFormPage';
-import DefaultFormPage from './FormPage';
-import SliderPage from './SliderPage';
-import DatePickerPage from './DatePickerPage';
-import SwitchPage from './SwitchPage';
+import { NotificationContainer } from 'react-notifications';
+import classNames from 'classnames';
+import { Alert } from '../../Components/Alert';
+import Sidebar from '../../Components/Sidebar';
 import NavBar from '../../Components/NavBar';
-import Table from './TablePage';
-import Dashboard from './Dashboard';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { stateType } from '../../Components/SettingsButton/types';
-import UIScreenPage from './UIScreenPage';
-import Badges from './UIScreenPage/UIElementsPages/Badges';
-import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
 import LineChart from '../../Components/Charts/LineChart';
 import PieChart from '../../Components/Charts/PieChart';
 import BarChart from '../../Components/Charts/BarChart';
 import ScatterChart from '../../Components/Charts/ScatterChart';
+import { NotificationContext, NotificationContextType } from '../../Components/NotificationContext';
+
+import DefaultFormPage from './FormPage';
+import SliderPage from './SliderPage';
+import DatePickerPage from './DatePickerPage';
+import SwitchPage from './SwitchPage';
+import Table from './TablePage';
+import Dashboard from './Dashboard';
+import UIScreenPage from './UIScreenPage';
+import Badges from './UIScreenPage/UIElementsPages/Badges';
+import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
 import Buttons from './UIScreenPage/UIElementsPages/Buttons';
 import Paginations from './UIScreenPage/UIElementsPages/Paginations';
 import Images from './UIScreenPage/UIElementsPages/Images';
 import Lists from './UIScreenPage/UIElementsPages/Lists';
 import ProgressBars from './UIScreenPage/UIElementsPages/ProgressBars';
 import Alerts from './UIScreenPage/UIElementsPages/Alerts';
-import { Alert } from '../../Components/Alert';
-import { NotificationContext, NotificationContextType } from '../../Components/NotificationContext';
-import { NotificationContainer } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
 import Notifications from './UIScreenPage/UIElementsPages/Notifications';
 import Tabs from './UIScreenPage/UIElementsPages/Tabs';
 import Typography from './UIScreenPage/UIElementsPages/Typography';
 import BreadcrumbsPage from './UIScreenPage/UIElementsPages/Breadcrumbs';
+
 import { useQuery, gql } from '@apollo/client';
 import { ProtectedRoute, Profile } from '@frontegg/react-auth';
 import { SSO } from '@frontegg/react-auth';
 import * as Frontegg from '@frontegg/react';
 import { MOCK_REQUESTS } from './mockRequests';
+
+import 'react-notifications/lib/notifications.css';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import './MainLayout.scss';
 
 const REQUESTS = gql`
   query {
@@ -54,28 +55,28 @@ const REQUESTS = gql`
 `;
 
 const TeamManagement = () => {
-  return <Frontegg.Team />
-}
+  return <Frontegg.Team />;
+};
 
 const Audits = () => {
-  return <Frontegg.Audits />
-}
+  return <Frontegg.Audits />;
+};
 
 const Slack = () => {
-  return <Frontegg.Slack rootDir={'/enterprise/slack'} />
-}
+  return <Frontegg.Slack rootDir={'/enterprise/slack'} />;
+};
 
 const Webhooks = () => {
-  return <Frontegg.WebHooks rootDir={'/enterprise/webhooks'} />
-}
+  return <Frontegg.WebHooks rootDir={'/enterprise/webhooks'} />;
+};
 
 const Sso = () => {
-  return <Frontegg.SsoConfiguration rootDir={'/enterprise/sso'} />
-}
+  return <Frontegg.SsoConfiguration rootDir={'/enterprise/sso'} />;
+};
 
 const ProfilePage = () => {
-  return <Profile.Page />
-}
+  return <Profile.Page />;
+};
 
 const MainDashboard = () => {
   const { loading, error, data } = useQuery(REQUESTS);
@@ -87,7 +88,9 @@ const MainDashboard = () => {
     console.error(error);
   }
 
-  return <Dashboard requests={data?.requests || MOCK_REQUESTS} />;
+  const requests = data?.requests.length ? data.requests : MOCK_REQUESTS;
+
+  return <Dashboard requests={requests} />;
 };
 
 const MainLayout: React.FC = () => {
@@ -119,10 +122,8 @@ const MainLayout: React.FC = () => {
   const [hovered, hoverExpand] = React.useState<boolean>(false);
 
   const handleFixedHover = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    if (collapsed) {
-      if (fixedSidebar) {
-        hoverExpand(!hovered);
-      }
+    if (collapsed && fixedSidebar) {
+      hoverExpand(!hovered);
     }
     if (!fixedSidebar) {
       hoverExpand(false);
@@ -154,21 +155,17 @@ const MainLayout: React.FC = () => {
   }, [handleScroll, handleResize]);
 
   React.useEffect(() => {
-    if (windowDimensions.width < 768) {
-      collapse(true);
-    } else {
-      collapse(false);
-    }
+    collapse(windowDimensions.width < 768);
   }, [windowDimensions]);
 
   const switches = [
     {
       label: 'Fix sidebar',
-      state: [fixedSidebar, setFixSidebar] as stateType<boolean>,
+      state: [fixedSidebar, setFixSidebar],
     },
     {
       label: 'Fix navbar',
-      state: [fixedNavbar, setFixNavbar] as stateType<boolean>,
+      state: [fixedNavbar, setFixNavbar],
     },
   ];
 
@@ -184,7 +181,7 @@ const MainLayout: React.FC = () => {
   });
 
   React.useEffect(() => {
-    document.getElementById('root')?.classList.add(`theme-light`);
+    document.getElementById('root')?.classList.add('theme-light');
   }, []);
 
   const handleThemeChange = (value: 'light' | 'dark' | 'navbar' | 'sidebar') => {
@@ -199,90 +196,85 @@ const MainLayout: React.FC = () => {
     app?.style.setProperty(param, value);
   };
 
+  const navBarClassName = !collapsed || (hovered && fixedSidebar) ? 'expanded' : 'collapsed';
+
+  const sideBarClassName =
+    !collapsed || (getWindowDimensions().width > 767 && hovered && fixedSidebar) ? 'expanded' : 'collapsed';
+
   return (
     <ThemeProvider theme={darkTheme}>
-      <div className='position-fixed fixed-bottom'>
-        {context &&
-          Object.entries(context.notifications).map(([key, value]) => {
-            if (value.position === 'fixed-bottom') {
-              return (
-                <Alert
-                  notificationKey={key}
-                  {...value}
-                  className={` position-realtive ${value.className}`}
-                  style={{ zIndex: 1000 }}>
-                  {value.text}
-                </Alert>
-              );
-            }
-            return null;
-          })}
+      <div className='fixed fixed-bottom'>
+        {Object.entries(context.notifications).map(([key, value]) => {
+          if (value.position === 'fixed-bottom') {
+            return (
+              <Alert
+                notificationKey={key}
+                {...value}
+                className={classNames('relative', value.className)}
+                style={{ zIndex: 1000 }}>
+                {value.text}
+              </Alert>
+            );
+          }
+          return null;
+        })}
       </div>
-      <div className='position-fixed fixed-top'>
-        {context &&
-          Object.entries(context.notifications).map(([key, value]) => {
-            if (value.position === 'fixed-top') {
-              return (
-                <Alert
-                  notificationKey={key}
-                  {...value}
-                  className={` position-realtive ${value.className}`}
-                  style={{ zIndex: 1000 }}>
-                  {value.text}
-                </Alert>
-              );
-            }
-            return null;
-          })}
+      <div className='fixed fixed-top'>
+        {Object.entries(context.notifications).map(([key, value]) => {
+          if (value.position === 'fixed-top') {
+            return (
+              <Alert
+                notificationKey={key}
+                {...value}
+                className={classNames('relative', value.className)}
+                style={{ zIndex: 1000 }}>
+                {value.text}
+              </Alert>
+            );
+          }
+          return null;
+        })}
       </div>
       <NotificationContainer />
       <div
-        className={`main-layout ${scrolled ? 'scrolled' : 'onTop'} ${fixedSidebar ? 'fixed-sidebar' : ''} ${
-          fixedNavbar ? 'fixedNavbar' : ''
-        }`}>
+        className={classNames('main-layout', {
+          scrolled,
+          'on-top': !scrolled,
+          'fixed-sidebar': fixedSidebar,
+          'fixed-navbar': fixedNavbar,
+        })}>
         <NavBar
           handleChangeNavbar={handleChangeNavbar}
           settings={switches}
           handleThemeChange={handleThemeChange}
           palletType={palletType}
-          className={`${collapsed ? (hovered && fixedSidebar ? 'expanded' : 'collapsed') : 'expanded'}
-                    ${fixedNavbar ? 'position-fixed' : 'position-absolute'}`}
+          className={classNames(navBarClassName, {
+            absolute: !fixedNavbar,
+            fixed: fixedNavbar,
+          })}
         />
-        <Sidebar
-          className={`${
-            collapsed
-              ? getWindowDimensions().width > 767 && hovered && fixedSidebar
-                ? 'expanded'
-                : 'collapsed'
-              : 'expanded'
-          }`}
-          onMouseLeave={handleFixedHover}
-          onMouseEnter={handleFixedHover}
-        />
+        <Sidebar className={sideBarClassName} onMouseLeave={handleFixedHover} onMouseEnter={handleFixedHover} />
         <div className='main'>
-          {context &&
-            Object.entries(context.notifications).map(([key, value]) => {
-              if (value.position === 'top') {
-                return (
-                  <Alert notificationKey={key} {...value} style={{ zIndex: 1000 }}>
-                    {value.text}
-                  </Alert>
-                );
-              }
-              return null;
-            })}
+          {Object.entries(context.notifications).map(([key, value]) => {
+            if (value.position === 'top') {
+              return (
+                <Alert notificationKey={key} {...value} style={{ zIndex: 1000 }}>
+                  {value.text}
+                </Alert>
+              );
+            }
+            return null;
+          })}
           <div className='p-4 content'>
             <Switch>
               <Route exact path='/' render={() => <Redirect to='/dashboard' />} />
               <ProtectedRoute path='/sso' component={SSO.Page} />
               <Route path='/dashboard' component={MainDashboard} />
-              <Route path='/forms/sample-forms' component={SampleFormPage} />
-              <Route path='/forms/default-forms' component={DefaultFormPage} />
+              <Route path='/forms/example' component={DefaultFormPage} />
               <Route path='/forms/sliders' component={SliderPage} />
-              <Route path='/forms/datepicker' component={DatePickerPage} />
+              <Route path='/forms/datepickers' component={DatePickerPage} />
               <Route path='/forms/switches' component={SwitchPage} />
-              <Route path='/forms/validation' component={ValidationFormPage} />
-              <Route path='/tables/regular' component={Table} />
+              <Route path='/tables/example' component={Table} />
               <ProtectedRoute path='/enterprise/team' component={TeamManagement} />
               <ProtectedRoute path='/enterprise/audits' component={Audits} />
               <ProtectedRoute path='/enterprise/sso' component={Sso} />

@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import './ProgressBar.scss';
 
 type ProgressBarProps = {
@@ -19,12 +20,12 @@ const ProgressBar: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
   );
 };
 
-export const ProgressLine: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
+const ProgressLine: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
   const { value, color, colorClass = '' } = props;
   return (
     <div className='w-100'>
       <div
-        className={`progress-bar my-3 h-1 ${colorClass}`}
+        className={classNames('progress-bar', 'my-3', 'h-1', colorClass)}
         style={{
           backgroundColor: color,
           width: `${value}%`,
@@ -34,12 +35,12 @@ export const ProgressLine: React.FC<ProgressBarProps> = (props: ProgressBarProps
   );
 };
 
-export const ProgressBarWithValue: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
+const ProgressBarWithValue: React.FC<ProgressBarProps> = (props: ProgressBarProps) => {
   const { value, color, colorClass = '' } = props;
   return (
     <div className='w-100'>
       <div
-        className={`progress-bar mb-5 ${colorClass}`}
+        className={classNames('progress-bar', 'mb-5', colorClass)}
         style={{
           backgroundColor: color,
           width: `${value}%`,
@@ -50,4 +51,4 @@ export const ProgressBarWithValue: React.FC<ProgressBarProps> = (props: Progress
   );
 };
 
-export default ProgressBar;
+export { ProgressBar, ProgressLine, ProgressBarWithValue };

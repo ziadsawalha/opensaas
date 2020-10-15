@@ -91,8 +91,8 @@ export const links: LinkType[] = [
     icon: '',
     sublinks: [
       {
-        path: '/regular',
-        label: 'Regular table',
+        path: '/example',
+        label: 'Table',
         icon: '',
       },
     ],
@@ -103,13 +103,8 @@ export const links: LinkType[] = [
     icon: '',
     sublinks: [
       {
-        path: '/sample-forms',
-        label: 'Sample forms',
-        icon: '',
-      },
-      {
-        path: '/default-forms',
-        label: 'Default forms',
+        path: '/example',
+        label: 'Form',
         icon: '',
       },
       {
@@ -118,13 +113,13 @@ export const links: LinkType[] = [
         icon: '',
       },
       {
-        path: '/switches',
-        label: 'Switches',
+        path: '/datepickers',
+        label: 'Datepickers',
         icon: '',
       },
       {
-        path: '/validation',
-        label: 'Form validation',
+        path: '/switches',
+        label: 'Switches',
         icon: '',
       },
     ],
@@ -157,11 +152,6 @@ export const links: LinkType[] = [
       {
         path: '/slack',
         label: 'Slack',
-        icon: '',
-      },
-      {
-        path: '/validation',
-        label: 'Form validation',
         icon: '',
       },
     ],
