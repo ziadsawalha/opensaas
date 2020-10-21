@@ -1,24 +1,22 @@
-# Use the official image as a parent image.
-FROM node:current-slim
+FROM node:12.19.0 as base
 
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
+FROM base as builder
 
-# Set the working directory.
 WORKDIR /usr/src/app
-
-# Copy the file from your host to your current location.
 COPY package.json .
+RUN npm install --production
+COPY . .
+RUN npm run build
 
-# Run the command inside your image filesystem.
-RUN npm install
 
-# Copy all other source code to work directory
-ADD . /usr/src/app
+FROM base as final
 
-# TypeScript
-# RUN npm run build
+WORKDIR /usr/src/app
+COPY package.json .
+COPY entrypoint.sh .
+COPY ormconfig.js .
+COPY --from=builder /usr/src/app/dist /usr/src/app/dist
+COPY --from=builder /usr/src/app/node_modules /usr/src/app/node_modules
 
-# Start
-CMD [ "npm", "start" ]
+CMD [ "/bin/bash", "./entrypoint.sh"]
 EXPOSE 5001
