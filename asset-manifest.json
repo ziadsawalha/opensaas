@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.22778633.chunk.css",
-    "main.js": "/static/js/main.01ed1aa1.chunk.js",
-    "main.js.map": "/static/js/main.01ed1aa1.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.c8a21426.js",
-    "runtime-main.js.map": "/static/js/runtime-main.c8a21426.js.map",
-    "static/css/2.97736dcb.chunk.css": "/static/css/2.97736dcb.chunk.css",
-    "static/js/2.05965fff.chunk.js": "/static/js/2.05965fff.chunk.js",
-    "static/js/2.05965fff.chunk.js.map": "/static/js/2.05965fff.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.0cd973ffd61c49e12714eb6dc30752f7.js": "/precache-manifest.0cd973ffd61c49e12714eb6dc30752f7.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.97736dcb.chunk.css.map": "/static/css/2.97736dcb.chunk.css.map",
-    "static/css/main.22778633.chunk.css.map": "/static/css/main.22778633.chunk.css.map",
-    "static/js/2.05965fff.chunk.js.LICENSE.txt": "/static/js/2.05965fff.chunk.js.LICENSE.txt",
-    "static/media/notifications.css": "/static/media/notification.c0d3c94c.eot"
+    "main.css": "/opensaas/static/css/main.22778633.chunk.css",
+    "main.js": "/opensaas/static/js/main.b48e560c.chunk.js",
+    "main.js.map": "/opensaas/static/js/main.b48e560c.chunk.js.map",
+    "runtime-main.js": "/opensaas/static/js/runtime-main.2032221e.js",
+    "runtime-main.js.map": "/opensaas/static/js/runtime-main.2032221e.js.map",
+    "static/css/2.465a76aa.chunk.css": "/opensaas/static/css/2.465a76aa.chunk.css",
+    "static/js/2.f55bef6a.chunk.js": "/opensaas/static/js/2.f55bef6a.chunk.js",
+    "static/js/2.f55bef6a.chunk.js.map": "/opensaas/static/js/2.f55bef6a.chunk.js.map",
+    "index.html": "/opensaas/index.html",
+    "precache-manifest.6f37e53bc0c9e32b1a0b8cf0e9724595.js": "/opensaas/precache-manifest.6f37e53bc0c9e32b1a0b8cf0e9724595.js",
+    "service-worker.js": "/opensaas/service-worker.js",
+    "static/css/2.465a76aa.chunk.css.map": "/opensaas/static/css/2.465a76aa.chunk.css.map",
+    "static/css/main.22778633.chunk.css.map": "/opensaas/static/css/main.22778633.chunk.css.map",
+    "static/js/2.f55bef6a.chunk.js.LICENSE.txt": "/opensaas/static/js/2.f55bef6a.chunk.js.LICENSE.txt",
+    "static/media/notifications.css": "/opensaas/static/media/notification.c0d3c94c.eot"
   },
   "entrypoints": [
-    "static/js/runtime-main.c8a21426.js",
-    "static/css/2.97736dcb.chunk.css",
-    "static/js/2.05965fff.chunk.js",
+    "static/js/runtime-main.2032221e.js",
+    "static/css/2.465a76aa.chunk.css",
+    "static/js/2.f55bef6a.chunk.js",
     "static/css/main.22778633.chunk.css",
-    "static/js/main.01ed1aa1.chunk.js"
+    "static/js/main.b48e560c.chunk.js"
   ]
 }
