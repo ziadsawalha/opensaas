@@ -1,6 +1,6 @@
 {
   "name": "opensaas",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create fully bundled SaaS application (Backend & Frontend) using an interactive CLI",
   "main": "bin/cli.js",
   "engines": {
