@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/opensaas/static/css/main.25146c95.chunk.css",
-    "main.js": "/opensaas/static/js/main.7eb32d27.chunk.js",
-    "main.js.map": "/opensaas/static/js/main.7eb32d27.chunk.js.map",
+    "main.js": "/opensaas/static/js/main.3ebe42db.chunk.js",
+    "main.js.map": "/opensaas/static/js/main.3ebe42db.chunk.js.map",
     "runtime-main.js": "/opensaas/static/js/runtime-main.2032221e.js",
     "runtime-main.js.map": "/opensaas/static/js/runtime-main.2032221e.js.map",
     "static/css/2.465a76aa.chunk.css": "/opensaas/static/css/2.465a76aa.chunk.css",
     "static/js/2.9c1d33c1.chunk.js": "/opensaas/static/js/2.9c1d33c1.chunk.js",
     "static/js/2.9c1d33c1.chunk.js.map": "/opensaas/static/js/2.9c1d33c1.chunk.js.map",
     "index.html": "/opensaas/index.html",
-    "precache-manifest.13b00b0817792ee13623bca498acb797.js": "/opensaas/precache-manifest.13b00b0817792ee13623bca498acb797.js",
+    "precache-manifest.a0f1b9834f4087d3cdad9fe299bccff9.js": "/opensaas/precache-manifest.a0f1b9834f4087d3cdad9fe299bccff9.js",
     "service-worker.js": "/opensaas/service-worker.js",
     "static/css/2.465a76aa.chunk.css.map": "/opensaas/static/css/2.465a76aa.chunk.css.map",
     "static/css/main.25146c95.chunk.css.map": "/opensaas/static/css/main.25146c95.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.465a76aa.chunk.css",
     "static/js/2.9c1d33c1.chunk.js",
     "static/css/main.25146c95.chunk.css",
-    "static/js/main.7eb32d27.chunk.js"
+    "static/js/main.3ebe42db.chunk.js"
   ]
 }
