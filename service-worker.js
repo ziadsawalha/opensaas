@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/opensaas/precache-manifest.a0f1b9834f4087d3cdad9fe299bccff9.js"
+  "/opensaas/precache-manifest.b639532837eb2594c2c368ef0d7a2a2b.js"
 );
 
 self.addEventListener('message', (event) => {
