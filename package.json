@@ -16,7 +16,6 @@
     "pre-commit-all": "make pre-commit",
     "prettier": "prettier 'cli/**/*.{js,ts,json}' --write",
     "provision": "make provision",
-    "prestart": "make prestart",
     "start-backend": "make start-backend",
     "start-frontend": "make start-frontend",
     "start-api-gw": "ts-node backend/api-gw/src/server.ts",
