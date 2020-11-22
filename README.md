@@ -45,11 +45,13 @@ In additions, it has plugged in [Frontegg](https://frontegg.com) powered enterpr
 
 ## Quick Start
 <br />
+
 ```sh
 npx opensaas my-app --client-id=MY_CLIENT_ID --api-key=MY_API_KEY
 cd my-app
 npm run start
 ```
+
 <br />
 
 (?) The Frontegg clientId and api key are available upon registration with [Frontegg](https://portal.frontegg.com) via the [Administration](https://portal.frontegg.com/administration) menu
