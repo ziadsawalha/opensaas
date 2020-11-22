@@ -10,10 +10,10 @@
 
 ## What's in it (WIIFM)?
 ### UI elements
-The application comes bundled with fully bundled dashboard including UI elements based on bootstrap and Material UI.<br />
+The application comes bundled with fully enabled dashboard including UI elements based on bootstrap and Material UI.<br />
 
 ### Dashboard and charts
-The application is bundled with re-charts which including fully enabled dashboard with charts (line, donut, pie) and data hooks which loads the data from the backend directly<br/>
+The application is bundled with re-charts which include a fully enabled dashboard with charts (line, donut, pie) and data hooks which loads the data from the backend directly<br/>
 
 ### Frontend
 The frontend is based on [React](https://reactjs.org/) including [Apollo client](https://www.apollographql.com/docs/react/) for the GraphQL operations <br/>
@@ -44,22 +44,21 @@ In additions, it has plugged in [Frontegg](https://frontegg.com) powered enterpr
 <br />
 
 ## Quick Start
-
 <br />
-
 ```sh
 npx opensaas my-app --client-id=MY_CLIENT_ID --api-key=MY_API_KEY
 cd my-app
 npm run start
 ```
+<br />
+
+(?) The Frontegg clientId and api key are available upon registration with [Frontegg](https://portal.frontegg.com) via the [Administration](https://portal.frontegg.com/administration) menu
 
 <br />
 
 <p align='center'>
 <img src='./npx-opensaas.gif' width='800' alt='npx opensaas my-project'>
 </p>
-
-<br />
 
 ### Port bindings
 
