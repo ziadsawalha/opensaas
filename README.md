@@ -8,25 +8,38 @@
 
 <br />
 
-### The Monorepo project consists of two micro services with an api gateway in front of them and a dashboard.
+## What's in it (WIIFM)?
+### UI elements
+The application comes bundled with fully bundled dashboard including UI elements based on bootstrap and Material UI.<br />
 
-### One service uses [PostgreSQL](https://www.postgresql.org/) and the other [MongoDB](https://www.mongodb.com/).
+### Dashboard and charts
+The application is bundled with re-charts which including fully enabled dashboard with charts (line, donut, pie) and data hooks which loads the data from the backend directly<br/>
 
-### The frontend is based on [React](https://reactjs.org/) framework and connected to the backend with [GraphQL](https://graphql.org/) data query.
+### Frontend
+The frontend is based on [React](https://reactjs.org/) including [Apollo client](https://www.apollographql.com/docs/react/) for the GraphQL operations <br/>
 
-### The project is written in [Typescript](https://www.typescriptlang.org/).
+### Backend 
+Backend is bundled with 2 micro-services and API gateway implemented in [Node.JS](https://nodejs.org/en/) over [Typescript](https://www.typescriptlang.org/) including full support for [GraphQL](https://graphql.org/) data query.
+<br/>
 
-### Open SAAS works with [Docker](https://www.docker.com/).
-
-<br />
-
-## Pre-requisites
-
-<br />
-
-- node.js - [Download page](https://nodejs.org/en/download/)
-- git - [Installation guide](https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/)
-- docker - [Download page](https://docs.docker.com/get-docker)
+#### Micro-services
+Micro-services are bundled with samples for data handling on [PostgreSQL](https://www.postgresql.org/) and [MongoDB](https://www.mongodb.com/). <br/>
+(*) In order to run the backend fully [Docker](https://www.docker.com/) is required.<br/> <br/>
+### E2E enterprise features (already plugged in)
+In additions, it has plugged in [Frontegg](https://frontegg.com) powered enterprise features **FULLY MANAGED** including:
+- Identity management (Login, Forgot password)
+- Authorization management (Roles and permissions handling)
+- Team management (inviting new users and revoking access)
+- Profile component including MFA and password change
+- Tenants management including back-office
+- Full enabled notifications center including:
+  - Notifications bell
+  - Web push support
+  - Webhooks infrastructure (including UI component allowing tenants to subscribe to webhooks)
+  - Slack Infrastructure (including UI component allowing tenants to subscribe to slack events)
+- Reporting mechanism
+  - Send weekly digest to customers
+  - Host customers reports on an in-app component allowing customers to schedule their own reports and view current status
 
 <br />
 
@@ -59,6 +72,8 @@ Metrics service default port is <b>5001</b>.
 Config service default port is <b>5002</b>.
 
 The dashboard can be opened on http://localhost:3000/.
+
+Dashboard BFF is running on http://localhost:8080/.
 
 <br />
 
