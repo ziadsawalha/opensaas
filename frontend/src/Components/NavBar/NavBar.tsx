@@ -39,7 +39,7 @@ const NavBar = (props: NavBarProps) => {
           <Notifications />
         </div>
       )}
-      <IconButton color='primary' onClick={() => setOpen(!open)}>
+      <IconButton color='primary' className='config-icon' onClick={() => setOpen(!open)}>
         <SettingsIcon fontSize='inherit' />
       </IconButton>
       <SettingsSidebar
