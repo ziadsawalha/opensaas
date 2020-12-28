@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b12f46722c2048dfe085e8e965cb49fb",
+    "revision": "e324620d751aa6addca75b6760b5e029",
     "url": "/opensaas/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/opensaas/static/css/2.5d9d4270.chunk.css"
   },
   {
-    "revision": "ab92335e107b702f1460",
+    "revision": "5beb4439053bb9f9fe5b",
     "url": "/opensaas/static/css/main.7ec66da6.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/opensaas/static/js/2.64450de0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ab92335e107b702f1460",
-    "url": "/opensaas/static/js/main.59a56513.chunk.js"
+    "revision": "5beb4439053bb9f9fe5b",
+    "url": "/opensaas/static/js/main.3b4834b0.chunk.js"
   },
   {
     "revision": "e9ed1669ada7a825fed6",
