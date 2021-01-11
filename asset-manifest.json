@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/opensaas/static/css/main.7ec66da6.chunk.css",
-    "main.js": "/opensaas/static/js/main.3b4834b0.chunk.js",
-    "main.js.map": "/opensaas/static/js/main.3b4834b0.chunk.js.map",
+    "main.css": "/opensaas/static/css/main.137db4ca.chunk.css",
+    "main.js": "/opensaas/static/js/main.bb8d4746.chunk.js",
+    "main.js.map": "/opensaas/static/js/main.bb8d4746.chunk.js.map",
     "runtime-main.js": "/opensaas/static/js/runtime-main.2032221e.js",
     "runtime-main.js.map": "/opensaas/static/js/runtime-main.2032221e.js.map",
     "static/css/2.5d9d4270.chunk.css": "/opensaas/static/css/2.5d9d4270.chunk.css",
-    "static/js/2.64450de0.chunk.js": "/opensaas/static/js/2.64450de0.chunk.js",
-    "static/js/2.64450de0.chunk.js.map": "/opensaas/static/js/2.64450de0.chunk.js.map",
+    "static/js/2.407045a6.chunk.js": "/opensaas/static/js/2.407045a6.chunk.js",
+    "static/js/2.407045a6.chunk.js.map": "/opensaas/static/js/2.407045a6.chunk.js.map",
     "index.html": "/opensaas/index.html",
-    "precache-manifest.9861a96b67bc1d2e44fd197654916249.js": "/opensaas/precache-manifest.9861a96b67bc1d2e44fd197654916249.js",
+    "precache-manifest.5d70d8441d7edfbe42316c8dce320a32.js": "/opensaas/precache-manifest.5d70d8441d7edfbe42316c8dce320a32.js",
     "service-worker.js": "/opensaas/service-worker.js",
     "static/css/2.5d9d4270.chunk.css.map": "/opensaas/static/css/2.5d9d4270.chunk.css.map",
-    "static/css/main.7ec66da6.chunk.css.map": "/opensaas/static/css/main.7ec66da6.chunk.css.map",
-    "static/js/2.64450de0.chunk.js.LICENSE.txt": "/opensaas/static/js/2.64450de0.chunk.js.LICENSE.txt",
+    "static/css/main.137db4ca.chunk.css.map": "/opensaas/static/css/main.137db4ca.chunk.css.map",
+    "static/js/2.407045a6.chunk.js.LICENSE.txt": "/opensaas/static/js/2.407045a6.chunk.js.LICENSE.txt",
     "static/media/bounce.567652bb.svg": "/opensaas/static/media/bounce.567652bb.svg",
     "static/media/box.ec8c23c0.svg": "/opensaas/static/media/box.ec8c23c0.svg",
     "static/media/clock.8a94845e.svg": "/opensaas/static/media/clock.8a94845e.svg",
@@ -43,8 +43,8 @@
   "entrypoints": [
     "static/js/runtime-main.2032221e.js",
     "static/css/2.5d9d4270.chunk.css",
-    "static/js/2.64450de0.chunk.js",
-    "static/css/main.7ec66da6.chunk.css",
-    "static/js/main.3b4834b0.chunk.js"
+    "static/js/2.407045a6.chunk.js",
+    "static/css/main.137db4ca.chunk.css",
+    "static/js/main.bb8d4746.chunk.js"
   ]
 }
