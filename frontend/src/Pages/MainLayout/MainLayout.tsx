@@ -256,7 +256,7 @@ const MainLayout: React.FC = () => {
             }
             return null;
           })}
-          <div className='p-4 content'>
+          <div className='content'>
             <Switch>
               <ProtectedRoute exact path='/' render={() => <Redirect to='/dashboard' />} />
               <ProtectedRoute path={routes.dashboard.path} component={MainDashboard} />
