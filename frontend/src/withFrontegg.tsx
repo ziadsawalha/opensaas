@@ -10,12 +10,12 @@ import { FronteggProvider as LegacyProvider, ContextOptions as LegacyOptions } f
  * use this object to config Frontegg global context object
  */
 const contextOptions: ContextOptions = {
-  baseUrl: 'http://localhost:8080',
+  baseUrl: process.env.REACT_APP_API_GW_URL || 'https://localhost:8080',
   requestCredentials: 'include',
 };
 
 const legacyContextOptions: LegacyOptions = {
-  baseUrl: 'http://localhost:8080',
+  baseUrl: process.env.REACT_APP_API_GW_URL || 'http://localhost:8080',
   requestCredentials: 'include',
   tokenResolver: () => {
     return ContextHolder.getAccessToken() || '';
