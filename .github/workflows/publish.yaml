@@ -16,9 +16,10 @@ jobs:
           username : ${{ secrets.DOCKER_HUB_USER }}
           password : ${{ secrets.DOCKER_HUB_PASSWORD }}
       - name : Build and push docker
-      - run: cd frontend
-      - run: docker build . -t frontegg/opensaas:latest
-      - run: docker push frontegg/opensaas:latest
+        run: |
+          cd frontend
+          docker build . -t frontegg/opensaas:latest
+          docker push frontegg/opensaas:latest
   publish:
     name: Publish to npm
     runs-on: ubuntu-latest
