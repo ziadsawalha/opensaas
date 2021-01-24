@@ -1,7 +1,13 @@
 import React, { useCallback } from 'react';
 import { Switch, Redirect } from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import classNames from 'classnames';
+import { useQuery, gql } from '@apollo/client';
+import { Audits } from '@frontegg/react-audits';
+import { ProtectedRoute, Profile, SSO, Team } from '@frontegg/react-auth';
+import { WebhookComponent, ConnectivityPage } from '@frontegg/react-connectivity';
+
 import { Alert } from '../../Components/Alert';
 import Sidebar from '../../Components/Sidebar';
 import NavBar from '../../Components/NavBar';
@@ -14,7 +20,6 @@ import SwitchPage from './SwitchPage';
 import Table from './TablePage';
 import Dashboard from './Dashboard';
 import UIScreenPage from './UIScreenPage';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import Badges from './UIScreenPage/UIElementsPages/Badges';
 import Dropdowns from './UIScreenPage/UIElementsPages/Dropdowns';
 import Buttons from './UIScreenPage/UIElementsPages/Buttons';
@@ -27,15 +32,13 @@ import Notifications from './UIScreenPage/UIElementsPages/Notifications';
 import Tabs from './UIScreenPage/UIElementsPages/Tabs';
 import Typography from './UIScreenPage/UIElementsPages/Typography';
 import BreadcrumbsPage from './UIScreenPage/UIElementsPages/Breadcrumbs';
-
-import { useQuery, gql } from '@apollo/client';
-import { ProtectedRoute, Profile } from '@frontegg/react-auth';
-import { SSO, Team } from '@frontegg/react-auth';
-import * as Frontegg from '@frontegg/react';
+import { APIManagement } from './APIManagement';
 import { MOCK_REQUESTS } from './mockRequests';
+import { routes } from '../../routes';
+import { Anomalies } from './Anomalies';
+import { Services } from './Services';
 
 import 'react-notifications/lib/notifications.css';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import './MainLayout.scss';
 
 const REQUESTS = gql`
@@ -55,16 +58,16 @@ const TeamManagement = () => {
   return <Team.Page />;
 };
 
-const Audits = () => {
-  return <Frontegg.Audits />;
+const AuditsPage = () => {
+  return <Audits.Page />;
 };
 
-const Slack = () => {
-  return <Frontegg.Slack rootDir={'/enterprise/slack'} />;
+const Connectivity = () => {
+  return <ConnectivityPage rootPath={routes.events.path} />;
 };
 
 const Webhooks = () => {
-  return <Frontegg.WebHooks rootDir={'/enterprise/webhooks'} />;
+  return <WebhookComponent rootPath={routes.webhooks.path} />;
 };
 
 const Sso = () => {
@@ -256,19 +259,21 @@ const MainLayout: React.FC = () => {
           <div className='p-4 content'>
             <Switch>
               <ProtectedRoute exact path='/' render={() => <Redirect to='/dashboard' />} />
-              <ProtectedRoute path='/sso' component={SSO.Page} />
-              <ProtectedRoute path='/dashboard' component={MainDashboard} />
+              <ProtectedRoute path={routes.dashboard.path} component={MainDashboard} />
+              <ProtectedRoute path={routes.team.path} component={TeamManagement} />
+              <ProtectedRoute path={routes.audits.path} component={AuditsPage} />
+              <ProtectedRoute path={routes.sso.path} component={Sso} />
+              <ProtectedRoute path={routes.events.path} component={Connectivity} />
+              <ProtectedRoute path={routes.webhooks.path} component={Webhooks} />
+              <ProtectedRoute path={routes.api.path} component={APIManagement} />
+              <ProtectedRoute path={routes.profile.path} component={ProfilePage} />
+              <ProtectedRoute path={routes.anomalies.path} component={Anomalies} />
+              <ProtectedRoute path={routes.services.path} component={Services} />
               <ProtectedRoute path='/forms/example' component={FormPage} />
               <ProtectedRoute path='/forms/sliders' component={SliderPage} />
               <ProtectedRoute path='/forms/datepickers' component={DatePickerPage} />
               <ProtectedRoute path='/forms/switches' component={SwitchPage} />
               <ProtectedRoute path='/tables/example' component={Table} />
-              <ProtectedRoute path='/enterprise/team' component={TeamManagement} />
-              <ProtectedRoute path='/enterprise/audits' component={Audits} />
-              <ProtectedRoute path='/enterprise/sso' component={Sso} />
-              <ProtectedRoute path='/enterprise/slack' component={Slack} />
-              <ProtectedRoute path='/enterprise/webhooks' component={Webhooks} />
-              <ProtectedRoute path='/enterprise/profile' component={ProfilePage} />
               <ProtectedRoute
                 path='/ui-elements'
                 render={(props) => (
@@ -291,7 +296,7 @@ const MainLayout: React.FC = () => {
                   </UIScreenPage>
                 )}
               />
-              <ProtectedRoute path='*' exact={true} component={NotFoundPage} />
+              <Redirect from='*' to='/' />
             </Switch>
           </div>
         </div>
