@@ -6,16 +6,19 @@ import { ContextHolder } from '@frontegg/rest-api';
 import { ContextOptions, PluginConfig, FronteggProvider } from '@frontegg/react-core';
 import { FronteggProvider as LegacyProvider, ContextOptions as LegacyOptions } from '@frontegg/react';
 
+const { REACT_APP_API_GW_URL } = process.env;
+console.log(`Initialized with ${REACT_APP_API_GW_URL} as gw url`);
+
 /**
  * use this object to config Frontegg global context object
  */
 const contextOptions: ContextOptions = {
-  baseUrl: process.env.REACT_APP_API_GW_URL || 'https://localhost:8080',
+  baseUrl: REACT_APP_API_GW_URL || 'https://localhost:8080',
   requestCredentials: 'include',
 };
 
 const legacyContextOptions: LegacyOptions = {
-  baseUrl: process.env.REACT_APP_API_GW_URL || 'http://localhost:8080',
+  baseUrl: REACT_APP_API_GW_URL || 'http://localhost:8080',
   requestCredentials: 'include',
   tokenResolver: () => {
     return ContextHolder.getAccessToken() || '';
