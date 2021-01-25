@@ -3,7 +3,8 @@
 import prompts from 'prompts';
 import ora from 'ora';
 import chalk from 'chalk';
-// import fs from 'fs';
+import fs from 'fs';
+import request from 'request';
 import { spawn } from 'child_process';
 import { sync as commandExists } from 'command-exists';
 
@@ -33,6 +34,18 @@ const longCommand = (command: string, text: string, onSuccess?: () => void, onDa
     });
   });
 };
+
+function download(uri, filename, callback) {
+  request.head(uri, (err, res, body) => {
+    if (!err) {
+      console.log('content-type:', res.headers['content-type']);
+      console.log('content-length:', res.headers['content-length']);
+
+      request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+    }
+
+  });
+}
 
 export async function initRepo(args: ArgsObject): Promise<void> {
   const { name, clientId, apiKey } = args;
@@ -65,19 +78,10 @@ export async function initRepo(args: ArgsObject): Promise<void> {
     await longCommand(`echo FRONTEGG_CLIENT_ID=${clientId} >> ${projectName}/frontend/.env`, '');
     await longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/frontend/.env`, '');
 
-    const files = [
-      `${projectName}/frontend/src/Components/NavBar/NavBar.tsx`,
-      `${projectName}/frontend/src/Components/Sidebar/Sidebar.tsx`,
-    ];
-    // for (const file of files) {
-    //   if (fs.existsSync(file)) {
-    //     const data = fs.readFileSync(file, { encoding: 'utf8', flag: 'r' });
-    //     fs.writeFileSync(
-    //       file,
-    //       data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`),
-    //     );
-    //   }
-    // }
+    download(
+      `https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`,
+      `${projectName}/frontend/public/images/logo.png`,
+      () => console.log('done downloading logo'));
   }
 
   await longCommand(

@@ -49,7 +49,7 @@ const Sidebar: FC<HTMLAttributes<HTMLElement>> = ({ className }) => {
     <div className={classNames('sidebar', className)}>
       <div className='logo'>
         <a className='d-flex flex-row align-items-center justify-content-start space-x-2' href='/'>
-          <Image src='/images/logo.svg' />
+          <Image src='/images/logo.png' />
         </a>
       </div>
       <div className='links-container'>{Menu}</div>

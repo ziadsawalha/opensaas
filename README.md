@@ -4,13 +4,13 @@
 
 <br />
 
-### [Link to Dashboard](https://frontegg.github.io/opensaas)
+### [Link to Dashboard](https://opensaas.frontegg.com)
 
 <br />
 
 ## What's in it (WIIFM)?
 ### UI elements
-The application comes bundled with fully enabled dashboard including UI elements based on bootstrap and Material UI.<br />
+The application comes bundled with a fully enabled dashboard including UI elements based on bootstrap and Material UI.<br />
 
 ### Dashboard and charts
 The application is bundled with [Recharts](https://recharts.org) which include a fully enabled dashboard with charts (line, donut, pie) and data hooks which loads the data from the backend directly<br/>
@@ -18,7 +18,7 @@ The application is bundled with [Recharts](https://recharts.org) which include a
 ### Frontend
 The frontend is based on [React](https://reactjs.org/) including [Apollo client](https://www.apollographql.com/docs/react/) for the GraphQL operations <br/>
 
-### Backend 
+### Backend
 Backend is bundled with 2 micro-services and API gateway implemented in [Node.JS](https://nodejs.org/en/) over [Typescript](https://www.typescriptlang.org/) including full support for [GraphQL](https://graphql.org/) data query.
 <br/>
 
