@@ -18,6 +18,7 @@ const prompts_1 = __importDefault(require("prompts"));
 const ora_1 = __importDefault(require("ora"));
 const chalk_1 = __importDefault(require("chalk"));
 const fs_1 = __importDefault(require("fs"));
+const request_1 = __importDefault(require("request"));
 const child_process_1 = require("child_process");
 const command_exists_1 = require("command-exists");
 const REQUIRED_COMMANDS = ['git', 'make'];
@@ -26,7 +27,7 @@ const longCommand = (command, text, onSuccess, onData) => {
     return new Promise((resolve, reject) => {
         const process = child_process_1.spawn(command, { shell: true });
         spinner.start(text);
-        process.stdout.on('data', (data) => {
+        process.stdout.on('data', data => {
             if (onData) {
                 onData(Buffer.from(data).toString());
             }
@@ -38,6 +39,15 @@ const longCommand = (command, text, onSuccess, onData) => {
         });
     });
 };
+function download(uri, filename, callback) {
+    request_1.default.head(uri, (err, res, body) => {
+        if (!err) {
+            console.log('content-type:', res.headers['content-type']);
+            console.log('content-length:', res.headers['content-length']);
+            request_1.default(uri).pipe(fs_1.default.createWriteStream(filename)).on('close', callback);
+        }
+    });
+}
 function initRepo(args) {
     return __awaiter(this, void 0, void 0, function* () {
         const { name, clientId, apiKey } = args;
@@ -61,13 +71,7 @@ function initRepo(args) {
             yield longCommand(`echo #Don't include this file in the source control >> ${projectName}/frontend/.env`, '');
             yield longCommand(`echo FRONTEGG_CLIENT_ID=${clientId} >> ${projectName}/frontend/.env`, '');
             yield longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/frontend/.env`, '');
-            const files = [`${projectName}/frontend/src/Components/NavBar/NavBar.tsx`, `${projectName}/frontend/src/Components/Sidebar/Sidebar.tsx`];
-            for (const file of files) {
-                if (fs_1.default.existsSync(file)) {
-                    const data = fs_1.default.readFileSync(file, { encoding: 'utf8', flag: 'r' });
-                    fs_1.default.writeFileSync(file, data.replace(/\/images\/logo.png/g, `https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`));
-                }
-            }
+            download(`https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`, `${projectName}/frontend/public/images/logo.png`, () => console.log('done downloading logo'));
         }
         yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk_1.default.white.bold('Installing packages, this might take few minutes'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished installing packages')), console.info);
         if (command_exists_1.sync('docker')) {
