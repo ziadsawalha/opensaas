@@ -13,7 +13,7 @@ console.log(`Initialized with ${REACT_APP_API_GW_URL} as gw url`);
  * use this object to config Frontegg global context object
  */
 const contextOptions: ContextOptions = {
-  baseUrl: REACT_APP_API_GW_URL || 'https://localhost:8080',
+  baseUrl: REACT_APP_API_GW_URL || 'http://localhost:8080',
   requestCredentials: 'include',
 };
 
