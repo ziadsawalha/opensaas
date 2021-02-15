@@ -48,9 +48,18 @@ function download(uri, filename, callback) {
         }
     });
 }
+function replaceHost(projectName, host) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const file = `${projectName}/frontend/src/withFrontegg.tsx`;
+        if (fs_1.default.existsSync(file)) {
+            const data = fs_1.default.readFileSync(file, { encoding: 'utf8', flag: 'r' });
+            fs_1.default.writeFileSync(file, data.replace(/http:\/\/localhost:8080/g, host));
+        }
+    });
+}
 function initRepo(args) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { name, clientId, apiKey } = args;
+        const { name, clientId, apiKey, host } = args;
         let projectName = name || '';
         while (!projectName.length) {
             const response = yield prompts_1.default({
@@ -72,6 +81,9 @@ function initRepo(args) {
             yield longCommand(`echo FRONTEGG_CLIENT_ID=${clientId} >> ${projectName}/frontend/.env`, '');
             yield longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/frontend/.env`, '');
             download(`https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`, `${projectName}/frontend/public/images/logo.png`, () => console.log('done downloading logo'));
+        }
+        if (host) {
+            yield replaceHost(projectName, host);
         }
         yield longCommand(`cd ${projectName} && npm i && npx lerna bootstrap`, chalk_1.default.white.bold('Installing packages, this might take few minutes'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished installing packages')), console.info);
         if (command_exists_1.sync('docker')) {
