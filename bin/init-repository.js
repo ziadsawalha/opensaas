@@ -76,11 +76,13 @@ function initRepo(args) {
             }
         }
         yield longCommand(`git clone --depth 1 https://github.com/frontegg/opensaas ${projectName}`, chalk_1.default.white.bold('Fetching data'), () => console.log(chalk_1.default.green('✔ ') + chalk_1.default.white.bold('Finished fetching data')), console.log);
-        if (clientId && apiKey) {
+        if (clientId) {
             yield longCommand(`echo #Don't include this file in the source control >> ${projectName}/frontend/.env`, '');
             yield longCommand(`echo FRONTEGG_CLIENT_ID=${clientId} >> ${projectName}/frontend/.env`, '');
-            yield longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/frontend/.env`, '');
             download(`https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`, `${projectName}/frontend/public/images/logo.png`, () => console.log('done downloading logo'));
+            if (apiKey) {
+                yield longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/frontend/.env`, '');
+            }
         }
         if (host) {
             yield replaceHost(projectName, host);

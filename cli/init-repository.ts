@@ -85,16 +85,19 @@ export async function initRepo(args: ArgsObject): Promise<void> {
     console.log,
   );
 
-  if (clientId && apiKey) {
+  if (clientId) {
     await longCommand(`echo #Don't include this file in the source control >> ${projectName}/frontend/.env`, '');
     await longCommand(`echo FRONTEGG_CLIENT_ID=${clientId} >> ${projectName}/frontend/.env`, '');
-    await longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/frontend/.env`, '');
 
     download(
       `https://assets.frontegg.com/public-vendor-assets/${clientId}/assets/logo.png`,
       `${projectName}/frontend/public/images/logo.png`,
       () => console.log('done downloading logo'),
     );
+
+    if (apiKey) {
+      await longCommand(`echo FRONTEGG_API_KEY=${apiKey} >> ${projectName}/frontend/.env`, '');
+    }
   }
 
   if (host) {
