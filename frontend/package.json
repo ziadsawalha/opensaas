@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.2.9",
+    "@frontegg/admin-portal": "^0.4.2",
     "@frontegg/client": "^1.2.16",
     "@frontegg/react": "^0.3.23",
     "@frontegg/react-audits": "^1.22.0",
