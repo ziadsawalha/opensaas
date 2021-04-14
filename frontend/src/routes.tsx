@@ -23,5 +23,4 @@ export const routes: TObjectRoute = {
     path: '/anomalies',
     label: 'Anomalies',
   },
-  
 };
