@@ -17,7 +17,7 @@ console.log(`Initialized with ${REACT_APP_API_GW_URL} as gw url`);
 const app = initialize({
     version: 'next',
     contextOptions: {
-      baseUrl: REACT_APP_API_GW_URL || 'https://cheli-adminbox3.frontegg.com',
+      baseUrl: REACT_APP_API_GW_URL || 'http://localhost:8080',
       requestCredentials: 'include',
     },
     headerImage: 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
@@ -28,7 +28,7 @@ const app = initialize({
  * use this object to config Frontegg global context object
  */
 const contextOptions: ContextOptions = {
-  baseUrl: REACT_APP_API_GW_URL || 'https://cheli-adminbox3.frontegg.com',
+  baseUrl: REACT_APP_API_GW_URL || 'http://localhost:8080',
   requestCredentials: 'include',
   tokenResolver: () => {
     return ContextHolder.getAccessToken() || '';
@@ -36,7 +36,7 @@ const contextOptions: ContextOptions = {
 };
 
 const legacyContextOptions: LegacyOptions = {
-  baseUrl: REACT_APP_API_GW_URL || 'https://cheli-adminbox3.frontegg.com',
+  baseUrl: REACT_APP_API_GW_URL || 'http://localhost:8080',
   requestCredentials: 'include',
   tokenResolver: () => {
     return ContextHolder.getAccessToken() || '';

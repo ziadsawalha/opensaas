@@ -36,6 +36,8 @@ const Menu = (
   </ul>
 );
 
+function showAdminPortal() { AdminPortal.show() };
+
 const Sidebar: FC<HTMLAttributes<HTMLElement>> = ({ className }) => {
   return (
     <div className={classNames('sidebar', className)}>
@@ -47,7 +49,7 @@ const Sidebar: FC<HTMLAttributes<HTMLElement>> = ({ className }) => {
       <div className='links-container'>{Menu}</div>
       <label htmlFor='collapsing' className='ml-4 mr-4 text-right cursor-pointer'>
         <div className='admin-link'>
-      <button onClick={() => AdminPortal.show()}> Admin Portal</button>
+       <button onClick={showAdminPortal}>Admin Portal</button>
         </div>
       </label>
     </div>
