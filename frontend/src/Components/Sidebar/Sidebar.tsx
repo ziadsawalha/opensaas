@@ -4,8 +4,8 @@ import SidebarHeadline from './SidebarHeadline';
 import SidebarLink from './SidebarLink';
 import Image from '../Image';
 import { routes } from '../../routes';
-import { Icon } from '../Icon';
 import './Sidebar.scss';
+import { AdminPortal } from '@frontegg/admin-portal';
 
 const Menu = (
   <ul>
@@ -14,14 +14,7 @@ const Menu = (
       'dashboard',
       'services',
       'anomalies',
-      'administration',
-      'profile',
-      'team',
-      'sso',
-      'api',
-      'webhooks',
-      'events',
-      'audits',
+
     ].map((key, idx) => {
       if (!routes[key]) return null;
       const { header, path, ...rest } = routes[key];
@@ -44,6 +37,10 @@ const Menu = (
   </ul>
 );
 
+function showAdminPortal() {
+  AdminPortal.show();
+}
+
 const Sidebar: FC<HTMLAttributes<HTMLElement>> = ({ className }) => {
   return (
     <div className={classNames('sidebar', className)}>
@@ -54,7 +51,9 @@ const Sidebar: FC<HTMLAttributes<HTMLElement>> = ({ className }) => {
       </div>
       <div className='links-container'>{Menu}</div>
       <label htmlFor='collapsing' className='ml-4 mr-4 text-right cursor-pointer'>
-        <Icon type='hamburger' />
+        <div className='admin-link'>
+          <button onClick={showAdminPortal}>Admin Portal</button>
+        </div>
       </label>
     </div>
   );

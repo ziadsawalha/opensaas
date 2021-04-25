@@ -5,6 +5,8 @@ import { ConnectivityPlugin } from '@frontegg/react-connectivity';
 import { ContextHolder } from '@frontegg/rest-api';
 import { ContextOptions, PluginConfig, FronteggProvider } from '@frontegg/react-core';
 import { FronteggProvider as LegacyProvider, ContextOptions as LegacyOptions } from '@frontegg/react';
+import { FronteggProvider as LoginBoxProvider } from '@frontegg/react-hooks';
+import { initialize } from '@frontegg/admin-portal';
 
 const { REACT_APP_API_GW_URL } = process.env;
 console.log(`Initialized with ${REACT_APP_API_GW_URL} as gw url`);
@@ -16,6 +18,16 @@ const contextOptions: ContextOptions = {
   baseUrl: REACT_APP_API_GW_URL || 'http://localhost:8080',
   requestCredentials: 'include',
 };
+
+const app = initialize({
+  version: 'next',
+  contextOptions: {
+    baseUrl: REACT_APP_API_GW_URL || 'http://localhost:8080',
+    requestCredentials: 'include',
+  },
+  headerImage: 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+  themeOptions: {},
+});
 
 const legacyContextOptions: LegacyOptions = {
   baseUrl: REACT_APP_API_GW_URL || 'http://localhost:8080',
@@ -41,10 +53,12 @@ const plugins: PluginConfig[] = [
  */
 export const withFrontegg = <P extends {}>(AppComponent: ComponentType<P>) => (props: P) => {
   return (
-    <FronteggProvider plugins={plugins} context={contextOptions}>
-      <LegacyProvider contextOptions={legacyContextOptions}>
-        <AppComponent {...props} />
-      </LegacyProvider>
-    </FronteggProvider>
+    <LoginBoxProvider app={app}>
+      <FronteggProvider plugins={plugins} context={contextOptions}>
+        <LegacyProvider contextOptions={legacyContextOptions}>
+          <AppComponent {...props} />
+        </LegacyProvider>
+      </FronteggProvider>
+    </LoginBoxProvider>
   );
 };

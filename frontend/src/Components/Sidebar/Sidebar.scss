@@ -25,6 +25,12 @@
     margin-top: 5rem;
   }
 
+  .admin-link {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 13px;
+  }
+
   @at-root {
     @media screen and (min-width: 768px) {
       .fixed-sidebar {
